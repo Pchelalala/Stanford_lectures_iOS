@@ -2,7 +2,7 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    lazy var game = Game(numberOfPairsOfCards: numberOfPairsOfCards)
+    private lazy var game = Game(numberOfPairsOfCards: numberOfPairsOfCards)
     
     var numberOfPairsOfCards: Int
     {
@@ -10,7 +10,7 @@ class ViewController: UIViewController
     }
     
     // property observer
-    var taps = 0
+    private(set) var taps = 0
     {
         didSet
         {
@@ -18,11 +18,11 @@ class ViewController: UIViewController
         }
     }
 
-    var emojiCollection = ["🐝", "🧚🏻‍♀️", "🪄", "🦋", "💫", "🔮", "🗝", "💸", "💎", "🩰", "🥥", "🦄"]
+    private var emojiCollection = ["🐝", "🧚🏻‍♀️", "🪄", "🦋", "💫", "🔮", "🗝", "💸", "💎", "🩰", "🥥", "🦄"]
     
-    var emojiDictionary = [Int:String]()
+    private var emojiDictionary = [Int:String]()
     
-    func emojiIdentifier(for card: Card) -> String
+    private func emojiIdentifier(for card: Card) -> String
     {
         if emojiDictionary[card.identyfier] == nil
         {
@@ -42,7 +42,7 @@ class ViewController: UIViewController
         return emojiDictionary[card.identyfier] ?? "?"
     }
     
-    func updateViewFromModel()
+    private func updateViewFromModel()
     {
         for index in buttonCollection.indices
         {
@@ -62,9 +62,9 @@ class ViewController: UIViewController
         }
     }
     
-    @IBOutlet var buttonCollection: [UIButton]!
-    @IBOutlet weak var tapLabel: UILabel!
-    @IBAction func buttonAction(_ sender: UIButton)
+    @IBOutlet private var buttonCollection: [UIButton]!
+    @IBOutlet private weak var tapLabel: UILabel!
+    @IBAction private func buttonAction(_ sender: UIButton)
     {
         taps += 1
         
