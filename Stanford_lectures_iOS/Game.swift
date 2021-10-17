@@ -5,6 +5,28 @@ class Game
     var cards = [Card]()
     
     var indexOfOneAndOnlyFaceUpCard: Int?
+    {
+        get
+        {
+            var foundIndex: Int?
+            for index in cards.indices
+            {
+                if cards[index].isFaceUp
+                {
+                    if foundIndex == nil { foundIndex = index }
+                    else { return nil }
+                }
+            }
+            return foundIndex
+        }
+        set
+        {
+            for index in cards.indices
+            {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     func chooseCard(at index: Int)
     {
@@ -20,16 +42,9 @@ class Game
                 }
                 
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             }
             else
             {
-                for flipDown in cards.indices
-                {
-                    cards[flipDown].isFaceUp = false
-                }
-                
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }

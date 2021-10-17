@@ -2,7 +2,12 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    lazy var game = Game(numberOfPairsOfCards: (buttonCollection.count + 1) / 2)
+    lazy var game = Game(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var numberOfPairsOfCards: Int
+    {
+        return (buttonCollection.count + 1) / 2
+    }
     
     // property observer
     var taps = 0
