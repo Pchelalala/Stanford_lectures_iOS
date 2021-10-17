@@ -52,6 +52,8 @@ class Game
     
     init(numberOfPairsOfCards: Int)
     {
+        assert(numberOfPairsOfCards > 0, "Game.init(\(numberOfPairsOfCards): must have at least one pair of cards!")
+        
         for _ in 1...numberOfPairsOfCards
         {
             let card = Card()
