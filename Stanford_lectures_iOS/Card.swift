@@ -1,10 +1,21 @@
 import Foundation
 
-struct Card
+struct Card: Hashable
 {
+    // func instead of hashValue (as it was shown in the 4th lecture)
+    func hash(into hasher: inout Hasher)
+    {
+        hasher.combine(identyfier)
+    }
+    
+    static func == (lhs: Card, rhs: Card) -> Bool
+    {
+        return lhs.identyfier == rhs.identyfier
+    }
+    
     var isFaceUp = false
     var isMatched = false
-    var identyfier: Int
+    private var identyfier: Int
     
     private static var identifierNumber = 0
     

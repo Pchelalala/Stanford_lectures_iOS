@@ -35,7 +35,7 @@ class Game
             // optional binding
             if let matchingIndex = indexOfOneAndOnlyFaceUpCard, matchingIndex != index
             {
-                if cards[matchingIndex].identyfier == cards[index].identyfier
+                if cards[matchingIndex] == cards[index]
                 {
                     cards[matchingIndex].isMatched = true
                     cards[index].isMatched = true
