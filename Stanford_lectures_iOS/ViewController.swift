@@ -18,7 +18,9 @@ class ViewController: UIViewController
         }
     }
 
-    private var emojiCollection = ["🐝", "🧚🏻‍♀️", "🪄", "🦋", "💫", "🔮", "🗝", "💸", "💎", "🩰", "🥥", "🦄"]
+    //difference between Int and String
+    // private var emojiCollection = ["🐝", "🧚🏻‍♀️", "🪄", "🦋", "💫", "🔮", "🗝", "💸", "💎", "🩰", "🥥", "🦄"]
+    private var emojiCollection = "🐝🧚🏻‍♀️🪄🦋💫🔮🗝💸💎🩰🥥🦄"
     
     private var emojiDictionary = [Card:String]()
     
@@ -26,7 +28,9 @@ class ViewController: UIViewController
     {
         if emojiDictionary[card] == nil
         {
-            emojiDictionary[card] = emojiCollection.remove(at: emojiCollection.count.arc4randomExtension)
+            let randomStringIndex = emojiCollection.index(emojiCollection.startIndex, offsetBy: emojiCollection.count.arc4randomExtension)
+            
+            emojiDictionary[card] = String(emojiCollection.remove(at:randomStringIndex))
         }
         
         // unwrapping optional
